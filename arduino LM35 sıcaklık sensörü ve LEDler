@@ -1,0 +1,27 @@
+float temperature;                       
+int sensorPin = 0;                       
+int ilkSicaklik=20;                         
+
+void setup()
+{
+  Serial.begin(9600);                    
+  for (int i=2;i<8; i++){                
+    pinMode(i,OUTPUT);                    
+  }}
+
+void loop()
+{
+  temperature = analogRead(sensorPin);    
+  temperature = temperature*0.488;        
+
+  for (int i=0;i<8; i++){
+    if (temperature>((i*2)+ilkSicaklik)){       
+      digitalWrite(i,HIGH);
+    } 
+    else {
+      digitalWrite(i,LOW);                
+    }}
+
+  Serial.print(temperature);Serial.println(" °C");  
+ delay(500);                             
+}
