@@ -1,0 +1,29 @@
+int LEDGreen=8;int LEDBlue=9;int LEDRed=10;
+int sensorPin=0;
+int val;
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(LEDRed,OUTPUT);
+  pinMode(LEDGreen,OUTPUT);
+  pinMode(LEDBlue,OUTPUT);  }
+
+void loop(){
+  
+  val=map(analogRead(sensorPin),0,1024,0,900);
+  Serial.println(val);
+    if (val<300) {
+    analogWrite(LEDRed,255);
+    analogWrite(LEDBlue,0); 
+    analogWrite(LEDGreen,0); }
+    
+    else if (val<600) {
+    analogWrite(LEDRed,0);
+    analogWrite(LEDBlue,255); 
+    analogWrite(LEDGreen,0); } 
+    
+    else if (val<900) {
+    analogWrite(LEDRed,0);
+    analogWrite(LEDBlue,0); 
+    analogWrite(LEDGreen,255);  
+  }}
