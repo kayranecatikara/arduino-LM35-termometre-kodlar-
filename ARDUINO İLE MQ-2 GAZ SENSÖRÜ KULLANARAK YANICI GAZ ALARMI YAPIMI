@@ -1,0 +1,17 @@
+int buzzer = 8;
+int sensor = A0;
+int sensorValue = 0;
+void setup() {
+pinMode(buzzer, OUTPUT);
+Serial.begin(9600);
+}
+void loop() {
+sensorValue = analogRead(sensor);
+Serial.println(sensorValue, DEC);
+if (sensorValue > 600) {
+digitalWrite(buzzer, HIGH);
+}
+else {
+digitalWrite(buzzer, LOW);
+}
+}
