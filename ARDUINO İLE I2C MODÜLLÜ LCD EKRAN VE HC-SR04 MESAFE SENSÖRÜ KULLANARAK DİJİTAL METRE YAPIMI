@@ -1,0 +1,29 @@
+#include <LCD.h>
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C  lcd(0x27,2,1,0,4,5,6,7);
+const int TrigPin = 12;
+const int EchoPin = 11;
+int mesafe ;
+int zaman;
+
+void setup()
+{
+  lcd.begin (16,2);
+  lcd.setBacklightPin(3,POSITIVE);
+  lcd.setBacklight(HIGH);
+  Serial.begin(9600);
+  pinMode(TrigPin , OUTPUT);
+  pinMode(EchoPin , INPUT);
+}
+void loop()
+{
+  digitalWrite(TrigPin , HIGH);
+  digitalWrite(TrigPin , LOW);
+  zaman = pulseIn (EchoPin , HIGH);
+  mesafe = (zaman / 2) / 28.5;
+
+  lcd.home();
+  lcd.print("Mesafe = ");
+  lcd.print((float)mesafe,1);
+  lcd.print(" cm ");
+  }
