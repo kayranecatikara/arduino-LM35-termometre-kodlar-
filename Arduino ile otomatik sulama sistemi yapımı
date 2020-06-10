@@ -1,0 +1,30 @@
+int role = 13;
+int sensorPin = A3;
+
+int nemdegeri;
+int nemEskidegeri = 15;
+
+void setup()
+{
+  pinMode(role, OUTPUT);
+  pinMode(sensorPin, INPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  nemdegeri = map(analogRead(sensorPin),1023,0,0,100);
+  Serial.print("Nem : %");
+  Serial.println(nemdegeri);
+
+  if(nemdegeri > nemEskidegeri)
+  {
+    digitalWrite(role, HIGH);
+  }
+  else
+  {
+    digitalWrite(role, LOW);
+  }
+  
+  delay(100);
+}
