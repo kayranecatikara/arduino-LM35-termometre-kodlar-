@@ -2,9 +2,9 @@
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C  lcd(0x27,2,1,0,4,5,6,7);
 const int TrigPin = 12;
-const int EchoPin = 11;
+const int EchoPin = 13;
 int mesafe ;
-int zaman;
+int sure;
 
 void setup()
 {
@@ -19,8 +19,8 @@ void loop()
 {
   digitalWrite(TrigPin , HIGH);
   digitalWrite(TrigPin , LOW);
-  zaman = pulseIn (EchoPin , HIGH);
-  mesafe = (zaman / 2) / 28.5;
+  sure = pulseIn (EchoPin , HIGH);
+  mesafe = (sure / 2) / 28.5;
 
   lcd.home();
   lcd.print("Mesafe = ");
